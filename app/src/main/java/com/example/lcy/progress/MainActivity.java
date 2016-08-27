@@ -13,10 +13,19 @@ import android.widget.ProgressBar;
  * style="?android:attr/progressBarStyleHorizontal" 水平进度条
  *
  * android:indeterminate="true" 不明确进度条
+ *
+ *
+ *
+ * 1.android默认进度条为不明确的圆环进度条
+ *
+ * 水平进度条 progressDrawable起作用
+ * 圆形进度条indeterminateDrawable 起作用
+ * 可以通过他们自定义进度样式
  */
 public class MainActivity extends Activity {
 
     ProgressBar progressBar;
+    ProgressBar pb;
     public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -24,6 +33,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        pb = (ProgressBar) findViewById(R.id.pb_1);
         progressBar = (ProgressBar) findViewById(R.id.pb);
         progressBar.setMax(100);
     }
@@ -34,6 +44,7 @@ public class MainActivity extends Activity {
     public void updateProgress(View view) {
 
         progressBar.setProgress(progress+=5);
+        pb.setProgress(progress+=5);
 
         if(progress >= 100) {
             progress = 0;
